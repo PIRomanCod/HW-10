@@ -167,7 +167,7 @@ def phone_verification(string):
 
 def change(string):
     new_elem = string.split()
-    if new_elem[0] not in users.data.keys():
+    if new_elem[0] not in users.data:
         raise NoUserError
     elif not phone_verification(string):
         raise VerificationError
@@ -191,7 +191,7 @@ def delete_phone(string):
 
 def phone(string):
     new_elem = string.split()
-    if new_elem[0] in users.data.keys():
+    if new_elem[0] in users.data:
         phones_list = []
         for phone in users.data[new_elem[0]].phones:
             phones_list.append(phone.value)
