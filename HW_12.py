@@ -44,9 +44,9 @@ CLI (Command Line Interface)
 - Додати користувачеві можливість пошуку вмісту книги контактів, щоб можна було знайти всю інформацію про одного або кількох користувачів за кількома цифрами номера телефону або літерами імені
 '''
 
+from collections import UserDict
 from datetime import datetime, date
 import pickle
-from collections import UserDict
 
 
 class VerificationError(Exception):
@@ -124,27 +124,6 @@ class Phone(Field):
             raise VerificationError
 
 
-# class Email(Field):
-    # @Field.value.setter
-    # def value(self, email):
-    #     checked_email = self.email_verification(email)
-    #     if checked_email:
-    #         self._value = email
-    #     else:
-    #         raise VerificationError
-
-    # @staticmethod
-    # def email_verification(email):
-    #     if phone.isdigit() and len(phone) == 10:
-    #         return True
-    #     else:
-    #         raise VerificationError
-
-
-class Notes(Field):
-    pass
-
-
 class Birthday(Field):
 
     @Field.value.setter
@@ -218,8 +197,6 @@ class Record(Field):
         self.name = Name(name)
         self.phones = []
         self.b_day = None
-        self.email = None
-        self.notes = None
 
     def add_phone(self, phone):
         self.phones.append(Phone(phone))
